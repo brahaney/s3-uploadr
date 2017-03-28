@@ -24,3 +24,4 @@ with open("/data/" + args.file, 'rb') as f:
     r = conn.upload(args.name, f, args.bucket, public=args.public)
     if r.status_code != 200:
         raise ConnectionError("{} - {}".format(r.status_code, r.reason))
+    print("Uploaded file to: " + r.url)
