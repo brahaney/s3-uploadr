@@ -9,9 +9,10 @@ RUN apk add --no-cache python3 && \
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
 ADD app /app
-
 WORKDIR /app
-
 RUN pip3 install -r requirements.txt
 
-ENTRYPOINT ["python", "entrypoint.py"]
+VOLUME /data
+WORKDIR /data
+
+ENTRYPOINT ["python", "/app/entrypoint.py"]
